@@ -10,7 +10,7 @@ import CartItemList from './CartItemList.vue'
 
     <CartItemList />
 
-    <div class="flex flex-col gap-4 mb-5">
+    <div class="flex flex-col gap-4 mt-7">
       <div class="flex gap-2">
         <span>Subtotal:</span>
         <div class="flex-1 border-b border-dashed"></div>
@@ -22,12 +22,12 @@ import CartItemList from './CartItemList.vue'
         <div class="flex-1 border-b border-dashed"></div>
         <b>7 $</b>
       </div>
+      <button
+        disabled=""
+        class="mt-4 bg-lime-500 w-full rounded-xl py-3 text-white disabled:bg-slate-400 hover:bg-lime-600 transition active:bg-lime-700 cursor-pointer"
+      >
+        Checkout
+      </button>
     </div>
-
-    <button
-      class="bg-lime-500 w-full rounded-xl py-3 text-white hover:bg-lime-600 transition active:bg-lime-700"
-    >
-      Checkout
-    </button>
   </div>
 </template>

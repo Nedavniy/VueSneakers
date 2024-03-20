@@ -11,7 +11,7 @@
     <ul class="flex items-center gap-10">
       <li class="flex items-center gap-3 cursor-pointer text-slate-500 hover:text-black">
         <img src="/cart.svg" alt="Cart" />
-        <b>13,50 USD</b>
+        <b>0 RUB</b>
       </li>
       <li class="flex items-center gap-3 cursor-pointer text-slate-500 hover:text-black">
         <img src="/heart.svg" alt="" />
