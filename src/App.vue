@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import axios from 'axios'
 
 import Header from './components/Header.vue'
@@ -8,9 +8,26 @@ import Drawer from './components/Drawer.vue'
 
 const items = ref({})
 
+const sortBy = ref('')
+const searchQuery = ref('')
+
+const onChangeSelect = (event) => {
+  sortBy.value = event.target.value
+}
 onMounted(async () => {
   try {
     const { data } = await axios.get('https://85c60f68c644cabb.mokky.dev/items')
+    items.value = data
+  } catch (err) {
+    console.log(err)
+  }
+})
+
+watch(sortBy, async () => {
+  try {
+    const { data } = await axios.get(
+      'https://85c60f68c644cabb.mokky.dev/items?sortBy=' + sortBy.value
+    )
     items.value = data
   } catch (err) {
     console.log(err)
@@ -28,10 +45,10 @@ onMounted(async () => {
         <h2 class="text-3xl font-bold mb-8">All sneakers</h2>
 
         <div class="flex gap-4">
-          <select class="py-2 px-3 border rounded-md outline-none" name="" id="">
-            <option value="">By name</option>
-            <option value="">By price (low to high)</option>
-            <option value="">By price (high to low)</option>
+          <select @change="onChangeSelect" class="py-2 px-3 border rounded-md outline-none">
+            <option value="name">By name</option>
+            <option value="price">By price (low to high)</option>
+            <option value="-price">By price (high to low)</option>
           </select>
 
           <div class="relative">
